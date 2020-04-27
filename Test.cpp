@@ -115,111 +115,154 @@ TEST_CASE("test RealVariable") {
 TEST_CASE("test imaginary"){
     ComplexVariable y;
     std::complex<double> solution = solve(y+5i == 2*y+3i);
-    CHECK(solution==(0,2));//1
+    std::complex<double> ans = std::complex<double>(0,2);
+    CHECK(solution==ans);
     solution = solve(y+6i == 2*y+3i);
-    CHECK(solution==(0,3i));//2
+    ans = std::complex<double>(0,3);
+    CHECK(solution==ans);
     solution = solve(y+7i == 2*y+3i);
-    CHECK(solution==(0,4i));//3
+    ans = std::complex<double>(0,4);
+    CHECK(solution==ans);
     solution = solve(y+8i == 2*y+3i);
-    CHECK(solution==(0,5i));//4
-    solution = solve(y+8i == 2*y+4i);
-    CHECK(solution==(0,4i));//5
-    solution = solve(y+4i == 2*y+8i);
-    CHECK(solution==(0,4i));//6
-    solution = solve(y+10i == 2*y+5i);
-    CHECK(solution==(0,5i));//7
-    solution = solve(y+10i == 2*y+5i);
-    CHECK(solution==(0,5i));//8
-    solution = solve(y+11i == 2*y+5i);
-    CHECK(solution==(0,6i));//9
-    solution = solve(y+12i == 2*y+5i);
-    CHECK(solution==(0,7i));//10
-    solution = solve(y+13i == 2*y+5i);
-    CHECK(solution==(0,8i));//11
-    solution = solve(y+14i == 2*y+5i);
-    CHECK(solution==(0,9i));//12
-    solution = solve(y+15i == 2*y+5i);
-    CHECK(solution==(0,10i));//13
-    solution = solve(y+16i == 2*y+5i);
-      CHECK(solution==(0,11i));//14
-      solution = solve(y+17i == 2*y+5i);
-      CHECK(solution==(0,12i));//15
-      solution = solve(y+18i == 2*y+5i);
-      CHECK(solution==(0,13i));//16
-      solution = solve(y+19i == 2*y+5i);
-      CHECK(solution==(0,14i));//17
-      solution = solve(y+20i == 2*y+5i);
-      CHECK(solution==(0,15i));//18
-      solution = solve(y+21i == 2*y+5i);
-      CHECK(solution==(0,16i));//19
-      solution = solve(y+21i == 2*y+5i);
-      CHECK(solution==(0,16i));//19
-      solution = solve(y+21i == 2*y+5i);
-      CHECK(solution==(0,16i));//19
-      solution = solve(y+21i == 2*y+5i);
-      CHECK(solution==(0,16i));//19
-      solution = solve(y+21i == 2*y+5i);
-      CHECK(solution==(0,16i));//20
-      solution = solve(y+22i == 2*y+5i);
-      CHECK(solution==(0,17i));//21
-      solution = solve(y+23i == 2*y+5i);
-      CHECK(solution==(0,18i));//22
-      solution = solve(y+24i == 2*y+5i);
-      CHECK(solution==(0,19i));//23
-      solution = solve(y+25i == 2*y+5i);
-      CHECK(solution==(0,20i));//24
-      solution = solve(y+26i == 2*y+5i);
-      CHECK(solution==(0,21i));//25
-      solution = solve(y+27i == 2*y+5i);
-      CHECK(solution==(0,22i));//26
-      solution = solve(y+28i == 2*y+5i);
-      CHECK(solution==(0,23i));//27
-      solution = solve(y+29i == 2*y+5i);
-      CHECK(solution==(0,24i));//28
-      solution = solve(y+30i == 2*y+5i);
-      CHECK(solution==(0,25i));//29
-      solution = solve(y+31i == 2*y+5i);
-      CHECK(solution==(0,26i));//30
-      solution = solve(y+32i == 2*y+5i);
-      CHECK(solution==(0,27i));//31
-      solution = solve(y+33i == 2*y+5i);
-      CHECK(solution==(0,28i));//32
-      solution = solve(y+34i == 2*y+5i);
-      CHECK(solution==(0,29i));//33
-      solution = solve(y+35i == 2*y+5i);
-      CHECK(solution==(0,30i));//34
-      solution = solve(y+36i == 2*y+5i);
-      CHECK(solution==(0,31i));//35
-      solution = solve(y+37i == 2*y+5i);
-      CHECK(solution==(0,32i));//36
-      solution = solve(y+38i == 2*y+5i);
-      CHECK(solution==(0,33i));//37
-      solution = solve(y+39i == 2*y+5i);
-      CHECK(solution==(0,34i));//38
-      solution = solve(y+40i == 2*y+5i);
-      CHECK(solution==(0,35i));//39
-      solution = solve(y+41i == 2*y+5i);
-      CHECK(solution==(0,36i));//40
-      solution = solve(y+42i == 2*y+5i);
-      CHECK(solution==(0,37i));//41
-      solution = solve(y+43i == 2*y+5i);
-      CHECK(solution==(0,38i));//42
-      solution = solve(y+44i == 2*y+5i);
-      CHECK(solution==(0,39i));//43
-      solution = solve(y+45i == 2*y+5i);
-      CHECK(solution==(0,40i));//44
-      solution = solve(y+46i == 2*y+5i);
-      CHECK(solution==(0,41i));//45
-      solution = solve(y+47i == 2*y+5i);
-      CHECK(solution==(0,42i));//46
-      solution = solve(y+48i == 2*y+5i);
-      CHECK(solution==(0,43i));//47
-      solution = solve(y+49i == 2*y+5i);
-      CHECK(solution==(0,44i));//448
-      solution = solve(y+50i == 2*y+5i);
-      CHECK(solution==(0,45i));//49
-      solution = solve(y+51i == 2*y+5i);
-      CHECK(solution==(0,46i));//50
-
+    ans = std::complex<double>(0,5);
+    CHECK(solution==ans);
+    solution = solve(y+9i == 2*y+3i);
+    ans = std::complex<double>(0,6);
+    CHECK(solution==ans);
+    solution = solve(y+10i == 2*y+3i);
+    ans = std::complex<double>(0,7);
+    CHECK(solution==ans);
+    solution = solve(y+11i == 2*y+3i);
+    ans = std::complex<double>(0,8);
+    CHECK(solution==ans);
+    solution = solve(y+12i == 2*y+3i);
+    ans = std::complex<double>(0,9);
+    CHECK(solution==ans);
+    solution = solve(y+13i == 2*y+3i);
+    ans = std::complex<double>(0,10);
+    CHECK(solution==ans);
+    solution = solve(y+14i == 2*y+3i);
+    ans = std::complex<double>(0,11);
+    CHECK(solution==ans);
+    solution = solve(y+15i == 2*y+3i);
+    ans = std::complex<double>(0,12);
+    CHECK(solution==ans);
+    solution = solve(y+16i == 2*y+3i);
+    ans = std::complex<double>(0,13);
+    CHECK(solution==ans);
+    solution = solve(y+17i == 2*y+3i);
+    ans = std::complex<double>(0,14);
+    CHECK(solution==ans);
+    solution = solve(y+18i == 2*y+3i);
+    ans = std::complex<double>(0,15);
+    CHECK(solution==ans);
+    solution = solve(y+19i == 2*y+3i);
+    ans = std::complex<double>(0,16);
+    CHECK(solution==ans);
+    solution = solve(y+20i == 2*y+3i);
+    ans = std::complex<double>(0,17);
+    CHECK(solution==ans);
+    solution = solve(y+21i == 2*y+3i);
+    ans = std::complex<double>(0,18);
+    CHECK(solution==ans);
+    solution = solve(y+22i == 2*y+3i);
+    ans = std::complex<double>(0,19);
+    CHECK(solution==ans);
+    solution = solve(y+23i == 2*y+3i);
+    ans = std::complex<double>(0,20);
+    CHECK(solution==ans);
+    solution = solve(y+24i == 2*y+3i);
+    ans = std::complex<double>(0,21);
+    CHECK(solution==ans);
+    solution = solve(y+25i == 2*y+3i);
+    ans = std::complex<double>(0,22);
+    CHECK(solution==ans);
+    solution = solve(y+26i == 2*y+3i);
+    ans = std::complex<double>(0,23);
+    CHECK(solution==ans);
+    solution = solve(y+27i == 2*y+3i);
+    ans = std::complex<double>(0,24);
+    CHECK(solution==ans);
+    solution = solve(y+28i == 2*y+3i);
+    ans = std::complex<double>(0,25);
+    CHECK(solution==ans);
+    solution = solve(y+29i == 2*y+3i);
+    ans = std::complex<double>(0,26);
+    CHECK(solution==ans);
+    solution = solve(y+30i == 2*y+3i);
+    ans = std::complex<double>(0,27);
+    CHECK(solution==ans);
+    solution = solve(y+31i == 2*y+3i);
+    ans = std::complex<double>(0,28);
+    CHECK(solution==ans);
+    solution = solve(y+32i == 2*y+3i);
+    ans = std::complex<double>(0,29);
+    CHECK(solution==ans);
+    solution = solve(y+33i == 2*y+3i);
+    ans = std::complex<double>(0,30);
+    CHECK(solution==ans);
+    solution = solve(y+34i == 2*y+3i);
+    ans = std::complex<double>(0,31);
+    CHECK(solution==ans);
+    solution = solve(y+35i == 2*y+3i);
+    ans = std::complex<double>(0,32);
+    CHECK(solution==ans);
+    solution = solve(y+36i == 2*y+3i);
+    ans = std::complex<double>(0,33);
+    CHECK(solution==ans);
+    solution = solve(y+37i == 2*y+3i);
+    ans = std::complex<double>(0,34);
+    CHECK(solution==ans);
+    solution = solve(y+38i == 2*y+3i);
+    ans = std::complex<double>(0,35);
+    CHECK(solution==ans);
+    solution = solve(y+39i == 2*y+3i);
+    ans = std::complex<double>(0,36);
+    CHECK(solution==ans);
+    solution = solve(y+40i == 2*y+3i);
+    ans = std::complex<double>(0,37);
+    CHECK(solution==ans);
+    solution = solve(y+41i == 2*y+3i);
+    ans = std::complex<double>(0,38);
+    CHECK(solution==ans);
+    solution = solve(y+42i == 2*y+3i);
+    ans = std::complex<double>(0,39);
+    CHECK(solution==ans);
+    solution = solve(y+43i == 2*y+3i);
+    ans = std::complex<double>(0,40);
+    CHECK(solution==ans);
+    solution = solve(y+44i == 2*y+3i);
+    ans = std::complex<double>(0,41);
+    CHECK(solution==ans);
+    solution = solve(y+45i == 2*y+3i);
+    ans = std::complex<double>(0,42);
+    CHECK(solution==ans);
+    solution = solve(y+46i == 2*y+3i);
+    ans = std::complex<double>(0,43);
+    CHECK(solution==ans);
+    solution = solve(y+47i == 2*y+3i);
+    ans = std::complex<double>(0,44);
+    CHECK(solution==ans);
+    solution = solve(y+48i == 2*y+3i);
+    ans = std::complex<double>(0,45);
+    CHECK(solution==ans);
+    solution = solve(y+49i == 2*y+3i);
+    ans = std::complex<double>(0,46);
+    CHECK(solution==ans);
+    solution = solve(y+50i == 2*y+3i);
+    ans = std::complex<double>(0,47);
+    CHECK(solution==ans);
+    solution = solve(y+51i == 2*y+3i);
+    ans = std::complex<double>(0,48);
+    CHECK(solution==ans);
+    solution = solve(y+52i == 2*y+3i);
+    ans = std::complex<double>(0,49);
+    CHECK(solution==ans);
+    solution = solve(y+53i == 2*y+3i);
+    ans = std::complex<double>(0,50);
+    CHECK(solution==ans);
+    solution = solve(y+54i == 2*y+3i);
+    ans = std::complex<double>(0,51);
+    CHECK(solution==ans);
 }
 
