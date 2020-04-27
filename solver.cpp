@@ -77,10 +77,10 @@ solver::ComplexVariable& solver::operator+(double num, ComplexVariable& x){
     return x;
 }
 
-static double solver::solve(RealVariable x){
+ double solver::solve(RealVariable x){
     return 0.0;
 }
-static std::complex<double> solver::solve(ComplexVariable x){
+ std::complex<double> solver::solve(ComplexVariable x){
     std::complex<double> temp(0,0);
     return temp;
 }
