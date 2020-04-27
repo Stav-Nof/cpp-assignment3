@@ -1,4 +1,5 @@
 #include <iostream>
+#include <complex>
 
 
 namespace solver{
@@ -22,8 +23,6 @@ namespace solver{
         RealVariable& operator==(RealVariable& other);
         RealVariable& operator^(double num);
         RealVariable& operator/(double num);
-        friend RealVariable& operator*(double num, RealVariable& x);
-        friend RealVariable& operator+(double num, RealVariable& x);
     };
     class ComplexVariable{
         private:
@@ -45,11 +44,16 @@ namespace solver{
         ComplexVariable& operator==(ComplexVariable& other);
         ComplexVariable& operator^(double num);
         ComplexVariable& operator/(double num);
-        friend ComplexVariable& operator*(double num, ComplexVariable& x);
-        friend ComplexVariable& operator+(double num, ComplexVariable& x);
+
     };
 
     static double solve(RealVariable x);
-    static ComplexVariable solve(ComplexVariable x);
-    
+    static std::complex<double> solve(ComplexVariable x);
+
+
+    RealVariable& operator*(double num, RealVariable& x);
+    RealVariable& operator+(double num, RealVariable& x);
+
+    ComplexVariable& operator*(double num, ComplexVariable& x);
+    ComplexVariable& operator+(double num, ComplexVariable& x);
 }
