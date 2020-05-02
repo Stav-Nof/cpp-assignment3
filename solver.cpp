@@ -4,12 +4,17 @@
 
 
 solver::RealVariable& solver::RealVariable::operator*(double num){
+    this->_a=(_a*num);
+    this->_b=(_b*num);
+    this->_c=(_c*num);
     return *this;
 }
 solver::RealVariable& solver::RealVariable::operator-(double num){
+    this->_c = (_c-num);
     return *this;
 }
 solver::RealVariable& solver::RealVariable::operator+(double num){
+    this->_c=_c+num;
     return *this;
 }
 solver::RealVariable& solver::RealVariable::operator+(RealVariable& other){
