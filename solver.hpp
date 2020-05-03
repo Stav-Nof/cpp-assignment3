@@ -5,12 +5,13 @@
 namespace solver{
     
     class RealVariable{
-        private:
+       
+       
+        
+        public:
         double _a;
         double _b;
         double _c;
-        
-        public:
         RealVariable(){
             _a = _b = _c = 0;
         }

@@ -14,16 +14,23 @@ solver::RealVariable& solver::RealVariable::operator-(double num){
     return *this;
 }
 solver::RealVariable& solver::RealVariable::operator+(double num){
-    this->_c=_c+num;
+    this->_c += num;
     return *this;
 }
 solver::RealVariable& solver::RealVariable::operator+(RealVariable& other){
+    this->_a += other._a;
+    this->_b += other._b;
+    this->_c += other._c;
     return *this;
 }
 solver::RealVariable& solver::RealVariable::operator-(RealVariable& other){
+    this->_a -= other._a;
+    this->_b -= other._b;
+    this->_c -= other._c;
     return *this;
 }
 solver::RealVariable& solver::RealVariable::operator==(double num){
+    this->_c -= num;
     return *this;
 }
 solver::RealVariable& solver::RealVariable::operator==(RealVariable& other){
@@ -36,9 +43,13 @@ solver::RealVariable& solver::RealVariable::operator/(double num){
     return *this;
 }
 solver::RealVariable& solver::operator*(double num, RealVariable& x){
+    x._a *= num;
+    x._b *= num;
+    x._c *= num;
     return x;
 }
 solver::RealVariable& solver::operator+(double num, RealVariable& x){
+    x._c += num;
     return x;
 }
 
