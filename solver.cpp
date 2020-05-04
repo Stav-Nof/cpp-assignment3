@@ -4,19 +4,30 @@
 #include "solver.hpp"
 
 solver::RealVariable::RealVariable(){
-    _a = _b = _c = _flag = 0;
+    _a = _b = _c = _flag = _eflag = 0;
 }
 
 solver::RealVariable& solver::RealVariable::operator*(double num){
-    if (this->_flag == 1){
-        this->_flag = 0;
-        this->_a *= num;
+    if (this->_eflag == 0){
+        if (this->_flag == 1){
+            this->_flag = 0;
+            this->_a *= num;
+        }
+        else {
+            if (this->_b == 0) this->_b = 1;
+            this->_b *= num;
+        }
     }
-    else {
-        if (this->_b == 0) this->_b = 1;
-        this->_b *= num;
+    else{
+        if (this->_flag == 1){
+            this->_flag = 0;
+            this->_a -= num;
+        }
+        else {
+            this->_b -= num;
+        }
     }
-    return *this;
+        return *this;
 }
 solver::RealVariable& solver::RealVariable::operator-(double num){
     this->_c -= num;
@@ -26,20 +37,15 @@ solver::RealVariable& solver::RealVariable::operator+(double num){//
     this->_c += num;
     return *this;
 }
-solver::RealVariable& solver::RealVariable::operator+(RealVariable& other){//
-    this->_a += other._a;
-    this->_b += other._b;
-    this->_c += other._c;
+solver::RealVariable& solver::RealVariable::operator+(RealVariable& other){
     return *this;
 }
-solver::RealVariable& solver::RealVariable::operator-(RealVariable& other){//
-    this->_a -= other._a;
-    this->_b -= other._b;
-    this->_c -= other._c;
+solver::RealVariable& solver::RealVariable::operator-(RealVariable& other){
     return *this;
 }
 solver::RealVariable& solver::RealVariable::operator==(double num){
     this->_c -= num;
+    this->_eflag = 1;
     return *this;
 }
 solver::RealVariable& solver::RealVariable::operator==(RealVariable& other){//
@@ -68,19 +74,12 @@ solver::RealVariable& solver::RealVariable::operator/(double num){//
     this->_c /= num;
     return *this;
 }
-solver::RealVariable& solver::operator*(double num, RealVariable& x){//
-    if (x._flag == 1){
-        x._flag = 0;
-        x._a *= num;
-    }
-    else {
-        if (x._b == 0) x._b = 1;
-        x._b *= num;
-    }
-    return x;
+solver::RealVariable& solver::operator*(double num, RealVariable& x){
+    return x*num;
 }
-solver::RealVariable& solver::operator+(double num, RealVariable& x){//
-    x._c += num;
+solver::RealVariable& solver::operator+(double num, RealVariable& x){
+    if (x._eflag == 0) x._c += num;
+    if (x._eflag == 1) x._c -= num;
     return x;
 }
 
@@ -138,9 +137,15 @@ solver::ComplexVariable& solver::operator+(double num, ComplexVariable& x){
     if (x._a == 0){
         ans = (x._c * -1)/x._b;
     }
+    else{
+       ans = -x._b/2 + std::sqrt(x._b*x._b-4*x._a*x._c)/2;
+    }
     x._a = 0;
     x._b = 0;
     x._c = 0;
+    x._eflag = 0;
+    x._flag = 0;
+    if (std::isnan(ans)) throw "not a number";
     return ans;
  }
  std::complex<double> solver::solve(ComplexVariable& x){

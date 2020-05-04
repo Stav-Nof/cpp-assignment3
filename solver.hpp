@@ -13,6 +13,7 @@ namespace solver{
         double _b;
         double _c;
         int _flag;
+        int _eflag;
         RealVariable();
         RealVariable& operator*(double num);
         RealVariable& operator-(double num);
