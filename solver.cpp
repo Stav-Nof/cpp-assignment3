@@ -85,15 +85,23 @@ solver::RealVariable& solver::operator+(double num, RealVariable& x){
 
 
 solver::ComplexVariable& solver::ComplexVariable::operator*(double num){
+    this->_a *= num;
+    this->_b *= num;
+    this->_c *= num; 
     return *this;
 }
 solver::ComplexVariable& solver::ComplexVariable::operator-(double num){
+    this->_c -= num;
     return *this;
 }
 solver::ComplexVariable& solver::ComplexVariable::operator+(double num){
+    this->_c += num;
     return *this;
 }
 solver::ComplexVariable& solver::ComplexVariable::operator+(ComplexVariable& other){
+    this->_a += other._a;
+    this->_b += other._b;
+    this->_c += other._c;
     return *this;
 }
 solver::ComplexVariable& solver::ComplexVariable::operator+(std::complex<double> other){
