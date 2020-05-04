@@ -7,7 +7,7 @@ TEST_CASE("Test")
 {
  RealVariable x;
 
-    cout << solve(2*x-4 == 10) << endl;
+    
      CHECK(solve(2*x-4 == 10) ==7);
      CHECK(solve(3*x-5 == 1) ==2);
      CHECK(solve(4*x-4 == 16) ==5);

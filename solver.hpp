@@ -47,8 +47,8 @@ namespace solver{
 
     };
 
-    double solve(RealVariable x);
-    std::complex<double> solve(ComplexVariable x);
+    double solve(RealVariable& x);
+    std::complex<double> solve(ComplexVariable& x);
 
 
     RealVariable& operator*(double num, RealVariable& x);
