@@ -24,7 +24,6 @@ namespace solver{
         RealVariable& operator==(RealVariable& other);
         RealVariable& operator^(double num);
         RealVariable& operator/(double num);
-        RealVariable& operator/(RealVariable& other);
     };
     class ComplexVariable{
         private:
@@ -55,7 +54,9 @@ namespace solver{
 
     RealVariable& operator*(double num, RealVariable& x);
     RealVariable& operator+(double num, RealVariable& x);
-
+    RealVariable& operator-(double num, RealVariable& x);
+    RealVariable& operator==(double num,RealVariable& x);
+    RealVariable& operator/(double num, RealVariable& x);
 
     ComplexVariable& operator*(double num, ComplexVariable& x);
     ComplexVariable& operator+(double num, ComplexVariable& x);
