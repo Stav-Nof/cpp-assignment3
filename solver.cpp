@@ -311,11 +311,14 @@ solver::ComplexVariable& solver::ComplexVariable::operator==(double num){
     if(temp->_a == 0 && temp->_b == 0 && temp->_c !=0){
         throw std::runtime_error("ERR");
     }
-    if(temp->_pow == 2 && num < 0){
-        throw std::runtime_error("ERR");
-    }
+  
     return *temp;
     
+}
+solver::ComplexVariable& solver::ComplexVariable::operator+(std::complex<double> complex){
+    this->_i += complex.imag();
+    this->_c += complex.real();
+    return *this;
 }
 solver::ComplexVariable& solver::ComplexVariable::operator==(ComplexVariable& other){
     
@@ -372,9 +375,7 @@ solver::ComplexVariable& solver::ComplexVariable::operator/(ComplexVariable& oth
     temp->_b = this->_b;
     temp->_c = this->_c;
     temp->_pow = this->_pow;
-    if(other._a == 0 || other._b == 0 || other._c == 0){
-          throw std::runtime_error("ERR");
-    }
+    
     if(temp->_pow == other._pow){
         temp->_b /= other._b;
         temp->_pow -= other._pow;
@@ -392,25 +393,21 @@ solver::ComplexVariable& solver::ComplexVariable::operator/(ComplexVariable& oth
 
 }
 
-double solver::solve(RealVariable& x){
-    if (x._a != 0) return -x._b/(2*x._a) + std::sqrt(x._b*x._b-4*x._a*x._c)/(2*x._a);
-    if (x._b != 0) return -x._c/x._b;
-    if (x._c != 0) throw "xation without solution";
+double solver::solve(RealVariable& equ){
+    if (equ._a != 0) return -equ._b/(2*equ._a) + std::sqrt(equ._b*equ._b-4*equ._a*equ._c)/(2*equ._a);
+    if (equ._b != 0) return -equ._c/equ._b;
+    if (equ._c != 0) throw "Equation without solution";
     return 0;
 }
- std::complex<double> solver::solve(ComplexVariable& x){
-    if (x._a != 0){
-        std::complex<double> ans ;
-        double temp = -x._b/(2*x._a) + std::sqrt(x._b*x._b-4*x._a*x._c)/(2*x._a);
-        ans = (temp,0);
+ std::complex<double> solver::solve(ComplexVariable& equ){
+   if (equ._a != 0) return -equ._b/(2*equ._a) + std::sqrt(equ._b*equ._b-4*equ._a*equ._c)/(2*equ._a);
+    if (equ._b != 0){
+        
+        double temp = -equ._c/equ._b;
+        std::complex<double> ans(temp,0);
+        std::cout<<equ._a<<","<<equ._b<<","<<equ._c<<","<<equ._i<<std::endl;
         return ans;
     }
-    if (x._b != 0){
-        std::complex<double> ans ;
-        double temp = -x._c/x._b;
-        ans = (temp,0);
-        return ans;
-    }
-    if (x._c != 0) throw "xation without solution";
+    if (equ._c != 0) throw "Equation without solution";
     return std::complex<double>(0,0);
 }
