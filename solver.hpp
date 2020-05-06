@@ -6,8 +6,6 @@ namespace solver{
     
     class RealVariable{
        
-       
-        
         public:
         double _a;
         double _b;
@@ -28,23 +26,24 @@ namespace solver{
     };
     class ComplexVariable{
         private:
-        std::complex<double> _a;
-        std::complex<double> _b;
-        std::complex<double> _c;
+        double _a;
+        double _b;
+        double _c;
         int _pow;
         
         public:
         ComplexVariable();
-        ComplexVariable& operator*(double num);
+       ComplexVariable& operator*(double num);
+        ComplexVariable& operator*(ComplexVariable& other);
         ComplexVariable& operator-(double num);
+        ComplexVariable& operator-(ComplexVariable& other);
         ComplexVariable& operator+(double num);
         ComplexVariable& operator+(ComplexVariable& other);
-        ComplexVariable& operator+(std::complex<double> other);
-        ComplexVariable& operator-(ComplexVariable& other);
         ComplexVariable& operator==(double num);
         ComplexVariable& operator==(ComplexVariable& other);
         ComplexVariable& operator^(double num);
         ComplexVariable& operator/(double num);
+        ComplexVariable& operator/(ComplexVariable& other);
 
     };
 
