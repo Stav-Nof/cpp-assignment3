@@ -11,7 +11,6 @@ solver::RealVariable::RealVariable(){
 }
 
 solver::RealVariable& solver::RealVariable::operator*(double num){
-    
     RealVariable *temp = new RealVariable();
     temp->_a = this->_a;
     temp->_b = this->_b;
@@ -23,7 +22,6 @@ solver::RealVariable& solver::RealVariable::operator*(double num){
     else{
         temp->_b *= num ;
     }
-
     return *temp;
 }
 solver::RealVariable& solver::RealVariable::operator*(RealVariable& other){
@@ -202,12 +200,25 @@ solver::RealVariable& solver::RealVariable::operator/(RealVariable& other){
 
 ////////////////////////////////////////////////////////////////////
 
-
+solver::ComplexVariable::ComplexVariable(){
+    _a = 0;
+    _b = 1;
+    _c = 0;
+    _pow = 1;
+}
 solver::ComplexVariable& solver::ComplexVariable::operator*(double num){
-    this->_a *= num;
-    this->_b *= num;
-    this->_c *= num; 
-    return *this;
+    ComplexVariable *temp = new ComplexVariable();
+    temp->_a = this->_a;
+    temp->_b = this->_b;
+    temp->_c = this->_c;
+    temp->_pow = this->_pow;
+    if(temp->_pow == 2){
+        temp->_a *= num;
+    }
+    else{
+        temp->_b *= num ;
+    }
+    return *temp;
 }
 solver::ComplexVariable& solver::ComplexVariable::operator-(double num){
     this->_c -= num;
@@ -248,12 +259,12 @@ solver::ComplexVariable& solver::operator+(double num, ComplexVariable& x){
     return x;
 }
 
-  double solver::solve(RealVariable& equ){
-        if (equ._a == 0){
-            return -equ._c/equ._b;
-        }
-        return -equ._b/(2*equ._a) + std::sqrt(equ._b*equ._b-4*equ._a*equ._c)/(2*equ._a);
-    };
+double solver::solve(RealVariable& equ){
+    if (equ._a != 0) return -equ._b/(2*equ._a) + std::sqrt(equ._b*equ._b-4*equ._a*equ._c)/(2*equ._a);
+    if (equ._b != 0) return -equ._c/equ._b;
+    if (equ._c != 0) throw "Equation without solution";
+    return 0;
+}
  std::complex<double> solver::solve(ComplexVariable& x){
     std::complex<double> temp(0,0);
     return temp;

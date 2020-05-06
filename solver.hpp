@@ -31,11 +31,10 @@ namespace solver{
         std::complex<double> _a;
         std::complex<double> _b;
         std::complex<double> _c;
+        int _pow;
         
         public:
-        ComplexVariable(){
-            _a = _b = _c = 0;
-        }
+        ComplexVariable();
         ComplexVariable& operator*(double num);
         ComplexVariable& operator-(double num);
         ComplexVariable& operator+(double num);
