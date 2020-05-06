@@ -25,13 +25,13 @@ namespace solver{
         RealVariable& operator/(RealVariable& other);
     };
     class ComplexVariable{
-        private:
+        public:
         double _a;
         double _b;
         double _c;
         int _pow;
         
-        public:
+        
         ComplexVariable();
        ComplexVariable& operator*(double num);
         ComplexVariable& operator*(ComplexVariable& other);
